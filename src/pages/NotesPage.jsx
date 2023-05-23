@@ -6,7 +6,10 @@ import {
   TableCell,
   TableContainer,
   TableRow,
+  Typography,
 } from '@mui/material'
+
+import ForwardIcon from '@mui/icons-material/Forward'
 
 const NotesPage = ({ notes }) => (
   <div>
@@ -17,9 +20,24 @@ const NotesPage = ({ notes }) => (
           {notes.map((note) => (
             <TableRow key={note.id}>
               <TableCell>
-                <Link to={`/notes/${note.id}`}>{note.content}</Link>
+                <Typography
+                  variant="link"
+                  component={Link}
+                  to={`/notes/${note.id}`}
+                >
+                  {note.content}
+                </Typography>
               </TableCell>
               <TableCell>{note.user}</TableCell>
+              <TableCell>
+                <Typography
+                  variant="link"
+                  component={Link}
+                  to={`/notes/${note.id}`}
+                >
+                  <ForwardIcon />
+                </Typography>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

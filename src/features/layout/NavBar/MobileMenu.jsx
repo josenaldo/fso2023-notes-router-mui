@@ -17,10 +17,10 @@ const drawerWidth = 240
 
 const MobileMenu = ({
   navItems,
-  handleDrawerToggle,
   user,
   logout,
   mobileOpen,
+  handleDrawerToggle,
 }) => {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
