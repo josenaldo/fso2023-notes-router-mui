@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { Navigate, Route, Routes, useMatch } from 'react-router-dom'
 
-import { Alert, Container } from '@mui/material'
+import { Alert, AlertTitle, Box, Container, IconButton } from '@mui/material'
+import CloseIcon from '@mui/icons-material/Close'
 
 import HomePage from '@/pages/HomePage'
 import LoginPage from '@/pages/LoginPage'
@@ -36,22 +37,31 @@ const App = () => {
 
   const [user, setUser] = useState(null)
 
-  const [message, setMessage] = useState(null)
+  const [alert, setAlert] = useState(null)
 
   const login = (user) => {
     setUser(user)
-    setMessage(`Welcome ${user}`)
+
+    setAlert({
+      type: 'success',
+      message: `Welcome ${user}`,
+    })
+
     setTimeout(() => {
-      setMessage(null)
-    }, 10000)
+      setAlert(null)
+    }, 100000)
   }
 
   const logout = () => {
     setUser(null)
-    setMessage('Logged out')
+    setAlert({
+      type: 'info',
+      message: 'Logged out',
+    })
+
     setTimeout(() => {
-      setMessage(null)
-    }, 10000)
+      setAlert(null)
+    }, 100000)
   }
 
   const match = useMatch('/notes/:id')
@@ -60,21 +70,41 @@ const App = () => {
     : null
 
   return (
-    <div>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        pt: 12,
+      }}
+    >
       <NavBar user={user} logout={logout} />
 
-      {message && (
+      {alert && (
         <Container>
-          <Alert severity="success">{message}</Alert>
+          <Alert
+            variant="outlined"
+            severity={alert.type}
+            action={
+              <IconButton
+                aria-label="close"
+                color="inherit"
+                size="small"
+                onClick={() => {
+                  setAlert(null)
+                }}
+              >
+                <CloseIcon fontSize="inherit" />
+              </IconButton>
+            }
+            sx={{ mb: 2 }}
+          >
+            <AlertTitle>Success</AlertTitle>
+            {alert.message}
+          </Alert>
         </Container>
       )}
 
-      <Container
-        as="main"
-        sx={{
-          my: 12,
-        }}
-      >
+      <Container as="main">
         <div>
           <Routes>
             <Route path="/notes/:id" element={<NotePage note={note} />} />
@@ -89,7 +119,7 @@ const App = () => {
         </div>
       </Container>
       <Footer />
-    </div>
+    </Box>
   )
 }
 

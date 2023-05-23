@@ -16,7 +16,7 @@ const NavBar = ({ user, logout }) => {
   }
 
   return (
-    <AppBar component="nav">
+    <AppBar component="nav" position="fixed">
       <Toolbar>
         <IconButton
           color="inherit"
