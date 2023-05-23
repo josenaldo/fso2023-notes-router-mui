@@ -1,20 +1,49 @@
-import { Icon } from '@/features/ui'
-import styles from './NotePage.module.css'
+import {
+  Avatar,
+  Box,
+  Card,
+  CardContent,
+  Container,
+  Typography,
+} from '@mui/material'
+import { PageTitle } from '@/features/ui'
+import GradeIcon from '@mui/icons-material/Grade'
 
 const NotePage = ({ note }) => {
   return (
-    <article>
-      <h2 className={styles.content}>
-        {note.important ? (
-          <Icon name="star_rate" />
-        ) : (
-          <Icon name="star_border" />
-        )}
-        {note.content}
-      </h2>
-      <div>{note.user}</div>
-      <div></div>
-    </article>
+    <Container>
+      <PageTitle>Note</PageTitle>
+
+      <Card>
+        <CardContent
+          sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'flex-start',
+            gap: '1.2rem',
+          }}
+        >
+          <NoteAvatar note={note} />
+
+          <Box>
+            <Typography variant="h5">{note.content}</Typography>
+            <Typography fontStyle="italic">{note.user}</Typography>
+          </Box>
+        </CardContent>
+      </Card>
+    </Container>
+  )
+}
+
+const NoteAvatar = ({ note }) => {
+  return (
+    <Avatar
+      sx={{
+        bgcolor: note.important ? 'primary.main' : 'grey.500',
+      }}
+    >
+      <GradeIcon />
+    </Avatar>
   )
 }
 

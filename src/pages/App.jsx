@@ -104,7 +104,7 @@ const App = () => {
         </Container>
       )}
 
-      <Container as="main">
+      <Box as="main">
         <div>
           <Routes>
             <Route path="/notes/:id" element={<NotePage note={note} />} />
@@ -117,7 +117,7 @@ const App = () => {
             <Route path="/" element={<HomePage />} />
           </Routes>
         </div>
-      </Container>
+      </Box>
       <Footer />
     </Box>
   )

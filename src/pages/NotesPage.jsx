@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import {
+  Container,
   Paper,
   Table,
   TableBody,
@@ -10,10 +11,12 @@ import {
 } from '@mui/material'
 
 import ForwardIcon from '@mui/icons-material/Forward'
+import { PageTitle } from '@/features/ui'
 
 const NotesPage = ({ notes }) => (
-  <div>
-    <h2>Notes</h2>
+  <Container>
+    <PageTitle>Notes</PageTitle>
+
     <TableContainer component={Paper}>
       <Table>
         <TableBody>
@@ -43,7 +46,7 @@ const NotesPage = ({ notes }) => (
         </TableBody>
       </Table>
     </TableContainer>
-  </div>
+  </Container>
 )
 
 export default NotesPage

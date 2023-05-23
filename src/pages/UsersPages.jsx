@@ -1,12 +1,23 @@
+import { Box, Container } from '@mui/material'
+
+import { PageTitle, UserCard } from '@/features/ui'
+
 const UsersPages = () => (
-  <div>
-    <h2>TKTL notes app</h2>
-    <ul>
-      <li>Matti Luukkainen</li>
-      <li>Juha Tauriainen</li>
-      <li>Arto Hellas</li>
-    </ul>
-  </div>
+  <Container>
+    <PageTitle>TKTL notes app</PageTitle>
+
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '1rem',
+      }}
+    >
+      <UserCard user="Matti Luukkainen" />
+      <UserCard user="Juha Tauriainen" />
+      <UserCard user="Arto Hellas" />
+    </Box>
+  </Container>
 )
 
 export default UsersPages

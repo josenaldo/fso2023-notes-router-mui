@@ -1,6 +1,15 @@
-import { Box, Button, Card, CardContent, TextField } from '@mui/material'
-
 import { useNavigate } from 'react-router-dom'
+
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  Container,
+  TextField,
+} from '@mui/material'
+
+import { PageTitle } from '@/features/ui'
 
 const LoginPage = (props) => {
   const navigate = useNavigate()
@@ -12,15 +21,10 @@ const LoginPage = (props) => {
   }
 
   return (
-    <div>
-      <h2>Login</h2>
+    <Container>
+      <PageTitle>Login</PageTitle>
 
-      <Card
-        sx={{
-          maxWidth: 600,
-          mx: 'auto',
-        }}
-      >
+      <Card>
         <CardContent>
           <Box
             component="form"
@@ -39,7 +43,7 @@ const LoginPage = (props) => {
           </Box>
         </CardContent>
       </Card>
-    </div>
+    </Container>
   )
 }
 
