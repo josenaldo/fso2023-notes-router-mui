@@ -98,7 +98,14 @@ const App = () => {
             }
             sx={{ mb: 2 }}
           >
-            <AlertTitle>Success</AlertTitle>
+            <AlertTitle
+              sx={{
+                textTransform: 'capitalize',
+              }}
+            >
+              {alert.type}
+            </AlertTitle>
+
             {alert.message}
           </Alert>
         </Container>
